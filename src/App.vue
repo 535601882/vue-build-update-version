@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -17,13 +13,11 @@
     return worker;
   }
 
-  import config from "@/config/version.js"// 
+  import config from "@/config/version.js"//
   export default {
     data(){
       return {
         cancelDelay: 1000 * 60 * 60,// 下一次函数执行的时间
-        // worktimeDelay: 6000 * 2
-        worktimeDelay: 5000,
         pollingWorker: null // work实例
       }
     },
@@ -31,7 +25,7 @@
       this.checkVersions()
     },
     methods:{
-       // 访问前端服务器获取版本号 
+       // 访问前端服务器获取版本号
       checkVersions(){
         fetch(`/version.json`)
         .then((res) => res.json())
@@ -81,7 +75,7 @@
                   clearInterval(timer);
                 }
               });
-            }, 5000);
+            }, 60000 * 2);
           }
         });
 
